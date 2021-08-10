@@ -9,14 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var emojis = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
-    @State var emojiCount = 8
+    @State var emojiCount = 4
     
     var body: some View {
         VStack{
             ScrollView{
-                LazyVGrid(columns: [GridItem(),GridItem(), GridItem()]) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
                     ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
-                        CardView(content: emoji).aspectRatio(3/4,contentMode: .fill)
+                        CardView(content: emoji).aspectRatio(3/4,contentMode: .fit)
                     }
                 }
             }
@@ -61,10 +61,10 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            let shape = RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+            let shape = RoundedRectangle(cornerRadius: 20)
             if isFaceUp {
                 shape.fill().foregroundColor(.white)
-                shape.stroke(lineWidth: 4)
+                shape.strokeBorder(lineWidth: 4)
                 Text(content).font(.largeTitle)
             } else {
                 shape.fill()
