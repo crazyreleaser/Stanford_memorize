@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
+    var emojisFruit = ["🍏","🍎","🍐","🍋","🍌","🍉","🍇","🍓","🫐","🍈","🍒","🍑","🥭","🍍","🥥","🥝","🍅","🍆","🥑","🥦","🥬","🥒","🌶"]
+    var emojisSport = ["⚽️","🏀","🏈","🥎","🏉","🥏","🎱","🏓","🪃","🏒","🏹","🪁","🥊","🛼","🛹","🥋","🛷","⛸","⛷","🏂","🪂","🏄‍♂️","🚣‍♀️"]
+    var emojisVehicles = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
+    
+    @State var currentEmojis = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
     @State var emojiCount = 4
     
     var body: some View {
         VStack{
+            Text("Memorize!").font(.largeTitle)
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
-                    ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
+                    ForEach(currentEmojis, id: \.self) { emoji in
                         CardView(content: emoji).aspectRatio(3/4,contentMode: .fit)
                     }
                 }
@@ -23,16 +28,53 @@ struct ContentView: View {
             .foregroundColor(.purple)
             Spacer()
             HStack{
-                removeCard
+//                removeCard
+                setFruits
                 Spacer()
-                addCard
+                setSports
+                Spacer()
+                setVehicles
+//                Spacer()
+//                addCard
             }
-            .font(.largeTitle)
             .padding(.horizontal)
         }
         .padding(.horizontal)
     }
     
+    var setFruits: some View {
+        Button(action: {
+            currentEmojis = emojisFruit
+            currentEmojis.shuffle()
+        }, label: {
+            VStack{
+                Image(systemName: "leaf").font(.largeTitle)
+                Text("Fruits")
+            }
+        })
+    }
+    var setSports: some View {
+        Button(action: {
+            currentEmojis = emojisSport
+            currentEmojis.shuffle()
+        }, label: {
+            VStack{
+                Image(systemName: "sportscourt").font(.largeTitle)
+                Text("Sports")
+            }
+        })
+    }
+    var setVehicles: some View {
+        Button(action: {
+            currentEmojis = emojisVehicles
+            currentEmojis.shuffle()
+        }, label: {
+            VStack{
+                Image(systemName: "car").font(.largeTitle)
+                Text("Vehicles")
+            }
+        })
+    }
     var removeCard: some View {
         Button(action: {
             if emojiCount > 1 {
@@ -44,7 +86,7 @@ struct ContentView: View {
     }
     var addCard: some View {
         Button(action: {
-            if emojiCount < emojis.count {
+            if emojiCount < currentEmojis.count {
                 emojiCount += 1
             }
         }, label: {
