@@ -26,75 +26,75 @@ struct ContentView: View {
                 }
             }
             .foregroundColor(.purple)
-            Spacer()
-            HStack{
-//                removeCard
-                setFruits
-                Spacer()
-                setSports
-                Spacer()
-                setVehicles
+//            Spacer()
+//            HStack{
+////                removeCard
+//                setFruits
 //                Spacer()
-//                addCard
-            }
-            .padding(.horizontal)
+//                setSports
+//                Spacer()
+//                setVehicles
+////                Spacer()
+////                addCard
+//            }
+//            .padding(.horizontal)
         }
         .padding(.horizontal)
     }
-    
-    var setFruits: some View {
-        Button(action: {
-            currentEmojis = emojisFruit
-            currentEmojis.shuffle()
-        }, label: {
-            VStack{
-                Image(systemName: "leaf").font(.largeTitle)
-                Text("Fruits")
-            }
-        })
-    }
-    var setSports: some View {
-        Button(action: {
-            currentEmojis = emojisSport
-            currentEmojis.shuffle()
-        }, label: {
-            VStack{
-                Image(systemName: "sportscourt").font(.largeTitle)
-                Text("Sports")
-            }
-        })
-    }
-    var setVehicles: some View {
-        Button(action: {
-            currentEmojis = emojisVehicles
-            currentEmojis.shuffle()
-        }, label: {
-            VStack{
-                Image(systemName: "car").font(.largeTitle)
-                Text("Vehicles")
-            }
-        })
-    }
-    var removeCard: some View {
-        Button(action: {
-            if emojiCount > 1 {
-                emojiCount -= 1
-            }
-        }, label: {
-            Image(systemName: "minus.circle")
-        })
-    }
-    var addCard: some View {
-        Button(action: {
-            if emojiCount < currentEmojis.count {
-                emojiCount += 1
-            }
-        }, label: {
-            VStack{
-                Image(systemName: "plus.circle")
-            }
-        })
-    }
+//
+//    var setFruits: some View {
+//        Button(action: {
+//            currentEmojis = emojisFruit
+//            currentEmojis.shuffle()
+//        }, label: {
+//            VStack{
+//                Image(systemName: "leaf").font(.largeTitle)
+//                Text("Fruits")
+//            }
+//        })
+//    }
+//    var setSports: some View {
+//        Button(action: {
+//            currentEmojis = emojisSport
+//            currentEmojis.shuffle()
+//        }, label: {
+//            VStack{
+//                Image(systemName: "sportscourt").font(.largeTitle)
+//                Text("Sports")
+//            }
+//        })
+//    }
+//    var setVehicles: some View {
+//        Button(action: {
+//            currentEmojis = emojisVehicles
+//            currentEmojis.shuffle()
+//        }, label: {
+//            VStack{
+//                Image(systemName: "car").font(.largeTitle)
+//                Text("Vehicles")
+//            }
+//        })
+//    }
+//    var removeCard: some View {
+//        Button(action: {
+//            if emojiCount > 1 {
+//                emojiCount -= 1
+//            }
+//        }, label: {
+//            Image(systemName: "minus.circle")
+//        })
+//    }
+//    var addCard: some View {
+//        Button(action: {
+//            if emojiCount < currentEmojis.count {
+//                emojiCount += 1
+//            }
+//        }, label: {
+//            VStack{
+//                Image(systemName: "plus.circle")
+//            }
+//        })
+//    }
 }
 
 struct CardView: View {
