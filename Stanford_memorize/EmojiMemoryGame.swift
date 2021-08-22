@@ -27,7 +27,7 @@ class EmojiMemoryGame: ObservableObject {
     
     func choose(_ card: MemoryGame<String>.Card) {
 //        objectWillChange.send()
-        
+         
         model.choose(card)
     }
 }
