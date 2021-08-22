@@ -44,7 +44,10 @@ struct CardView: View {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: 4)
                 Text(card.content).font(.largeTitle)
-            } else {
+            } else if card.isMatched {
+                shape.opacity(0.3)
+            }
+            else {
                 shape.fill()
             }
         }
