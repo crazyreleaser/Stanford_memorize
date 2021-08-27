@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		843DF38726BD84FE007271E9 /* Stanford_memorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DF38626BD84FE007271E9 /* Stanford_memorizeApp.swift */; };
-		843DF38926BD84FE007271E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DF38826BD84FE007271E9 /* ContentView.swift */; };
+		843DF38926BD84FE007271E9 /* EmojiMemoryGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DF38826BD84FE007271E9 /* EmojiMemoryGameView.swift */; };
 		843DF38B26BD8504007271E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843DF38A26BD8504007271E9 /* Assets.xcassets */; };
 		843DF38E26BD8504007271E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843DF38D26BD8504007271E9 /* Preview Assets.xcassets */; };
 		843DF39926BD8504007271E9 /* Stanford_memorizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DF39826BD8504007271E9 /* Stanford_memorizeTests.swift */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		843DF38326BD84FE007271E9 /* Stanford_memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stanford_memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843DF38626BD84FE007271E9 /* Stanford_memorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stanford_memorizeApp.swift; sourceTree = "<group>"; };
-		843DF38826BD84FE007271E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		843DF38826BD84FE007271E9 /* EmojiMemoryGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameView.swift; sourceTree = "<group>"; };
 		843DF38A26BD8504007271E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		843DF38D26BD8504007271E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		843DF38F26BD8504007271E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				843DF38626BD84FE007271E9 /* Stanford_memorizeApp.swift */,
-				843DF38826BD84FE007271E9 /* ContentView.swift */,
+				843DF38826BD84FE007271E9 /* EmojiMemoryGameView.swift */,
 				84E0D42726CA5B9500E30AC5 /* MemoryGame.swift */,
 				84E0D42926CA5EBE00E30AC5 /* EmojiMemoryGame.swift */,
 				843DF38A26BD8504007271E9 /* Assets.xcassets */,
@@ -266,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E0D42826CA5B9500E30AC5 /* MemoryGame.swift in Sources */,
-				843DF38926BD84FE007271E9 /* ContentView.swift in Sources */,
+				843DF38926BD84FE007271E9 /* EmojiMemoryGameView.swift in Sources */,
 				843DF38726BD84FE007271E9 /* Stanford_memorizeApp.swift in Sources */,
 				84E0D42A26CA5EBE00E30AC5 /* EmojiMemoryGame.swift in Sources */,
 			);

@@ -13,16 +13,16 @@ struct EmojiMemoryGameView: View {
 //    var emojisVehicles = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
 //
 //    @State var currentEmojis = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
-    @ObservedObject var viewModel: EmojiMemoryGame
+    @ObservedObject var game: EmojiMemoryGame
     var body: some View {
         VStack{
             Text("Memorize!").font(.largeTitle)
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
-                    ForEach(viewModel.cards ) { card in
+                    ForEach(game.cards ) { card in
                         CardView(card: card).aspectRatio(3/4,contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                game.choose(card)
                             }
                     }
                 }
@@ -55,9 +55,9 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        EmojiMemoryGameView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.light)
-        EmojiMemoryGameView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
     }
 }
