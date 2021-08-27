@@ -20,7 +20,7 @@ struct EmojiMemoryGameView: View {
             ScrollView{
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
                     ForEach(game.cards ) { card in
-                        CardView(card).aspectRatio(3/4,contentMode: .fit)
+                        CardView(card: card).aspectRatio(3/4,contentMode: .fit)
                             .onTapGesture {
                                 game.choose(card)
                             }
@@ -34,11 +34,7 @@ struct EmojiMemoryGameView: View {
 }
 
 struct CardView: View {
-    private let card: EmojiMemoryGame.Card
-    
-    init (_ card: EmojiMemoryGame.Card){
-        self.card = card
-    }
+    let card: EmojiMemoryGame.Card
     var body: some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: 20)
