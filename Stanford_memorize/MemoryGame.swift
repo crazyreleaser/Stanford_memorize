@@ -27,17 +27,19 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 //            } else {
 //                return nil
 //            }
-            cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly
+            cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly 
         }
         set {
-            for index in cards.indices {
-                cards[index].isFaceUp = (index == newValue)
-//                if index != newValue {
-//                    cards[index].isFaceUp = false
-//                } else {
-//                    cards[index].isFaceUp = true
-//                }
-            }
+//            cards.indices.forEach({ index in cards[index].isFaceUp = (index == newValue) })
+            cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) }
+//            for index in cards.indices {
+//                cards[index].isFaceUp = (index == newValue)
+////                if index != newValue {
+////                    cards[index].isFaceUp = false
+////                } else {
+////                    cards[index].isFaceUp = true
+////                }
+//            }
         }
     }
     
