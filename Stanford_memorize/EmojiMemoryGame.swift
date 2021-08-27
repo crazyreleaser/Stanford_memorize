@@ -21,9 +21,9 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
-    @Published private var model: MemoryGame<String> = createEmojiGame()
+    @Published private var model = createEmojiGame()
     
-    var cards: Array<Card> {
+    var cards: Array< Card> {
         model.cards
     }
     
