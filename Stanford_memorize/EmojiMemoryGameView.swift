@@ -17,32 +17,21 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         VStack{
             Text("Memorize!").font(.largeTitle)
-//            ScrollView{
-//                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
-//                    ForEach(game.cards ) { card in
-            AspectVGrid(items: game.cards, aspectRatio: 2/3, content: { card in
-                cardView(for: card)
-            })
-                        
-//                    }
-//                }
-//            }
-            .foregroundColor(.purple)
-        }
-        .padding(.horizontal)
-    }
-    
-    @ViewBuilder
-    private func cardView (for card: EmojiMemoryGame.Card) -> some View {
-        if card.isMatched && !card.isFaceUp {
-            Rectangle().opacity(0)
-        } else {
-            CardView(card: card)
-                .padding(4)
-                .onTapGesture {
-                    game.choose(card)
+            AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+                if card.isMatched && !card.isFaceUp {
+                    Rectangle().opacity(0)
+                } else {
+                    CardView(card: card)
+                        .padding(4)
+                        .onTapGesture {
+                            game.choose(card)
+                        }
                 }
+            }
+            .foregroundColor(.purple)
+            .padding(.horizontal)
         }
+        
     }
 }
 
