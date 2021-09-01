@@ -21,7 +21,8 @@ struct EmojiMemoryGameView: View {
 //                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
 //                    ForEach(game.cards ) { card in
             AspectVGrid(items: game.cards, aspect: 2/3, content: { card in
-                CardView(card: card).aspectRatio(3/4,contentMode: .fit)
+                CardView(card: card)
+                    .padding(4)
                     .onTapGesture {
                         game.choose(card)
                     }
