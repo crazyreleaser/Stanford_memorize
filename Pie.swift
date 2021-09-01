@@ -27,7 +27,7 @@ struct Pie: Shape {
                  radius: radius,
                  startAngle: startAngle,
                  endAngle: endAngle,
-                 clockwise: !clockwise      // coords in programs and on screens are different from cooords in Math - they are inverted by y, so clockwise is also inverted 
+                 clockwise: !clockwise      // coords in programs and on screens are different from cooords in Math - they are inverted by y, so clockwise is also inverted
         )
         p.addLine(to: center)
         return p
