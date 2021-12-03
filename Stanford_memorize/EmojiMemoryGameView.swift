@@ -40,21 +40,11 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                let shape = RoundedRectangle(cornerRadius: DrawningConstants.cornerRadius)
-                if card.isFaceUp {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: DrawningConstants.lineWidth)
-                    Pie(startAngle: Angle(degrees: 270), endAngle: Angle(degrees: 20))
-                        .padding(4).opacity(0.5)
-                    Text(card.content).font(font(in: geometry.size))
-                } else if card.isMatched {
-                    shape.opacity(0.3)
-                }
-                else {
-                    shape.fill()
-                }
+                Pie(startAngle: Angle(degrees: 270), endAngle: Angle(degrees: 20))
+                    .padding(4).opacity(0.5)
+                Text(card.content).font(font(in: geometry.size))
             }
-            
+            .modifier(Cardify(isFaceUp: card.isFaceUp))
         }
     }
     
@@ -63,8 +53,6 @@ struct CardView: View {
     }
     
     private struct DrawningConstants {
-        static let cornerRadius: CGFloat = 10
-        static let lineWidth: CGFloat = 2
         static let fontScale: CGFloat = 0.65
     }
 }

@@ -1,0 +1,33 @@
+//
+//  Cardify.swift
+//  Stanford_memorize
+//
+//  Created by admin on 03.12.2021.
+//
+
+import SwiftUI
+
+struct Cardify: ViewModifier {
+    
+    var isFaceUp: Bool
+    
+    func body(content: Content) -> some View {
+        ZStack {
+            let shape = RoundedRectangle(cornerRadius: DrawningConstants.cornerRadius)
+            if isFaceUp {
+                shape.fill().foregroundColor(.white)
+                shape.strokeBorder(lineWidth: DrawningConstants.lineWidth)
+                content
+            } else {
+                shape.fill()
+            }
+        }
+    }
+    
+    
+    private struct DrawningConstants {
+        static let cornerRadius: CGFloat = 10
+        static let lineWidth: CGFloat = 2
+    }
+    
+}
