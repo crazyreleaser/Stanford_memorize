@@ -42,18 +42,30 @@ struct CardView: View {
             ZStack {
                 Pie(startAngle: Angle(degrees: 270), endAngle: Angle(degrees: 20))
                     .padding(4).opacity(0.5)
-                Text(card.content).font(font(in: geometry.size))
+                Text(card.content)
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                    .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
+//                    .font(font(in: geometry.size))
+// Because off  text is not animatable - there is terrible bugs in animation
+// But scale eefect woks fine
+// see here: https://youtu.be/PoeaUMGAx6c
+                    .font(Font.system(size: DrawningConstants.fontSize))
+                    .scaleEffect(scale(thatFits: geometry.size))
             }
             .cardify(isFaceUp: card.isFaceUp)
         }
     }
     
-    private func font(in size: CGSize) -> Font { 
-        Font.system(size: min(size.width, size.height) * DrawningConstants.fontScale)
+//    private func font(in size: CGSize) -> Font {
+//        Font.system(size: min(size.width, size.height) * DrawningConstants.fontScale)
+//    }
+    private func scale(thatFits size: CGSize) -> CGFloat {
+        min(size.height, size.width) / (DrawningConstants.fontSize / DrawningConstants.fontScale)
     }
     
     private struct DrawningConstants {
         static let fontScale: CGFloat = 0.65
+        static let fontSize: CGFloat = 32
     }
 }
 
