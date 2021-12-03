@@ -44,11 +44,11 @@ struct CardView: View {
                     .padding(4).opacity(0.5)
                 Text(card.content).font(font(in: geometry.size))
             }
-            .modifier(Cardify(isFaceUp: card.isFaceUp))
+            .cardify(isFaceUp: card.isFaceUp)
         }
     }
     
-    private func font(in size: CGSize) -> Font {
+    private func font(in size: CGSize) -> Font { 
         Font.system(size: min(size.width, size.height) * DrawningConstants.fontScale)
     }
     
