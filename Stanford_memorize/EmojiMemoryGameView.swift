@@ -44,11 +44,9 @@ struct CardView: View {
                     .padding(4).opacity(0.5)
                 Text(card.content)
                     .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+// rotates only one card of two - animation animate ONLY WHAT CHANGES, but on second card isMtached didnt changed
+// we shoud change some View so text would be there permanent - see cardify
                     .animation(.easeInOut(duration: 2).repeatForever(autoreverses: false))
-//                    .font(font(in: geometry.size))
-// Because off  text is not animatable - there is terrible bugs in animation
-// But scale eefect woks fine
-// see here: https://youtu.be/PoeaUMGAx6c
                     .font(Font.system(size: DrawningConstants.fontSize))
                     .scaleEffect(scale(thatFits: geometry.size))
             }
@@ -56,9 +54,6 @@ struct CardView: View {
         }
     }
     
-//    private func font(in size: CGSize) -> Font {
-//        Font.system(size: min(size.width, size.height) * DrawningConstants.fontScale)
-//    }
     private func scale(thatFits size: CGSize) -> CGFloat {
         min(size.height, size.width) / (DrawningConstants.fontSize / DrawningConstants.fontScale)
     }

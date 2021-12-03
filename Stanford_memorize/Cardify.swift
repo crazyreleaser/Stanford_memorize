@@ -17,10 +17,12 @@ struct Cardify: ViewModifier {
             if isFaceUp {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: DrawningConstants.lineWidth)
-                content
             } else {
                 shape.fill()
             }
+// this bugfix for rotation animation
+            content
+                .opacity(isFaceUp ? 1 : 0)
         }
     }
     
