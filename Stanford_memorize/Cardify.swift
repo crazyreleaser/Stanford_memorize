@@ -24,6 +24,7 @@ struct Cardify: ViewModifier {
             content
                 .opacity(isFaceUp ? 1 : 0)
         }
+        .rotation3DEffect(Angle.degrees(isFaceUp ? 0 : 180), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/)
     }
     
     
