@@ -59,7 +59,7 @@ struct EmojiMemoryGameView: View {
             ForEach(game.cards.filter(isUndealt)) { card in
                 CardView(card: card)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
-                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .scale ))
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .identity ))
             }
         }
         .onTapGesture{
