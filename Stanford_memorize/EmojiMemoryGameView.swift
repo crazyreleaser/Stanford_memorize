@@ -26,6 +26,8 @@ struct EmojiMemoryGameView: View {
     
     @State private var dealt = Set<Int>()           // all about the dealt - is for  animation onAppear
     
+    @Namespace private var dealingNamespace
+    
     private func deal(_ card : EmojiMemoryGame.Card) {
         dealt.insert(card.id)
     }
@@ -39,6 +41,7 @@ struct EmojiMemoryGameView: View {
                 Color.clear // = Rectangle().opacity(0)
             } else {
                 CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .padding(4)
                     .transition(AnyTransition.asymmetric(insertion: .scale, removal: .opacity))
                     .onTapGesture {
@@ -55,6 +58,7 @@ struct EmojiMemoryGameView: View {
         ZStack{
             ForEach(game.cards.filter(isUndealt)) { card in
                 CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .scale ))
             }
         }
