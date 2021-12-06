@@ -23,18 +23,35 @@ struct EmojiMemoryGameView: View {
          
     }
     
+    @State private var dealt = Set<Int>()           // all about the dealt - is for  animation onAppear
+    
+    private func deal(_ card : EmojiMemoryGame.Card) {
+        dealt.insert(card.id)
+    }
+    private func isUndealt(_ card: EmojiMemoryGame.Card) -> Bool {
+        !dealt.contains(card.id)
+    }
+    
     var gameBody: some View {
         AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
-            if card.isMatched && !card.isFaceUp {
+            if isUndealt(card) || card.isMatched && !card.isFaceUp {
                 Color.clear // = Rectangle().opacity(0)
             } else {
                 CardView(card: card)
                     .padding(4)
+                    .transition(AnyTransition.asymmetric(insertion: .scale, removal: .opacity).animation(.easeInOut(duration: 3)))
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 3)){
                             game.choose(card)
                         }
                     }
+            }
+        }
+        .onAppear{
+            withAnimation{
+                for card in game.cards {
+                    deal(card)
+                }
             }
         }
         .foregroundColor(.purple)
