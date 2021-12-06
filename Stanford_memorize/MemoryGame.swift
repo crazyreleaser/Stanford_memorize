@@ -34,6 +34,10 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
         print("Choden card: \(cards)")
     }
+    
+    mutating func shuffle() {
+        cards.shuffle()
+    }
         
     init(numberOFPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
         cards = []  // we say above that this is Array of card, no need do it twice 
@@ -43,6 +47,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: pairIndex*2))
             cards.append(Card(content: content, id: pairIndex*2+1))
         }
+        cards.shuffle()
     }
     
     struct Card: Identifiable {
