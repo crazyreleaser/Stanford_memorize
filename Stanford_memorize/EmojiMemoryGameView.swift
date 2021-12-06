@@ -19,7 +19,12 @@ struct EmojiMemoryGameView: View {
             Text("Memorize!").font(.largeTitle)
             gameBody
             deckBody
-            shuffleButton
+            HStack{
+                restartButton
+                Spacer()
+                shuffleButton
+            }
+            .padding()
         }.padding()
          
     }
@@ -91,6 +96,15 @@ struct EmojiMemoryGameView: View {
         Button("Shuffle") {
             withAnimation(.easeInOut(duration: 3)){
                 game.shuffle()
+            }
+        }
+    }
+    
+    var restartButton: some View {
+        Button("Restart") {
+            withAnimation(.easeInOut(duration: 2)) {
+                dealt = []
+                game.restart()
             }
         }
     }
