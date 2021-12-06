@@ -15,16 +15,18 @@ struct EmojiMemoryGameView: View {
 //    @State var currentEmojis = ["🚗","🚕","🚙","🚌","🚎","🏎","🚓","🚑","🚒","🚐","🛻","🚚","🚛","🚜","🛵","🚲","🛴","🏍","🛺","🚔","🚍","🚘","🚃","🚠","🚡","🚖","🚅","✈️","🛫","🛬","🛰","🚀","🛸","🚁","🛩","🛶","⛵️","🚤","🛥","🛳","⛴","🚢"]
     @ObservedObject var game: EmojiMemoryGame
     var body: some View {
-        VStack{
-            Text("Memorize!").font(.largeTitle)
-            gameBody
-            deckBody
-            HStack{
-                restartButton
-                Spacer()
-                shuffleButton
+        ZStack(alignment: .bottom) {
+            VStack{
+                Text("Memorize!").font(.largeTitle)
+                gameBody
+                HStack{
+                    restartButton
+                    Spacer()
+                    shuffleButton
+                }
+                .padding(.horizontal)
             }
-            .padding()
+            deckBody
         }.padding()
          
     }
