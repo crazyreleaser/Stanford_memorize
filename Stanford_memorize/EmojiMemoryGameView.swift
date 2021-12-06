@@ -18,6 +18,7 @@ struct EmojiMemoryGameView: View {
         VStack{
             Text("Memorize!").font(.largeTitle)
             gameBody
+            deckBody
             shuffleButton
         }.padding()
          
@@ -39,7 +40,7 @@ struct EmojiMemoryGameView: View {
             } else {
                 CardView(card: card)
                     .padding(4)
-                    .transition(AnyTransition.asymmetric(insertion: .scale, removal: .opacity).animation(.easeInOut(duration: 3)))
+                    .transition(AnyTransition.asymmetric(insertion: .scale, removal: .opacity))
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 3)){
                             game.choose(card)
@@ -47,21 +48,42 @@ struct EmojiMemoryGameView: View {
                     }
             }
         }
-        .onAppear{
+        .foregroundColor(CardConstants.color)
+    }
+    
+    var deckBody: some View {
+        ZStack{
+            ForEach(game.cards.filter(isUndealt)) { card in
+                CardView(card: card)
+                    .transition(AnyTransition.asymmetric(insertion: .opacity, removal: .scale ))
+            }
+        }
+        .onTapGesture{
             withAnimation{
                 for card in game.cards {
                     deal(card)
                 }
             }
         }
-        .foregroundColor(.purple)
+        .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(CardConstants.color)
     }
+    
     var shuffleButton: some View {
         Button("Shuffle") {
             withAnimation(.easeInOut(duration: 3)){
                 game.shuffle()
             }
         }
+    }
+    
+    private struct CardConstants {
+        static let color = Color.purple
+        static let aspectRatio: CGFloat = 2/3
+        static let dealDuration: Double = 0.5
+        static let totalDealDuration: Double = 2
+        static let undealtHeight: CGFloat = 90
+        static let undealtWidth: CGFloat = undealtHeight * aspectRatio
     }
 }
 
